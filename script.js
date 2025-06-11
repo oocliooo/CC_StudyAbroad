@@ -113,85 +113,48 @@ const translations = {
     }
 };
 
-// 更新导师数据 - 添加两个香港科技大学计算机系的默认导师
+// 导师数据 
 const tutorsData = [
     {
         id: 'T001',
-        name: 'Alex张志豪',
-        school: '香港科技大学',
-        major: '计算机',
-        grade: '硕士',
-        region: '香港',
-        specialties: ['CS申请', '机器学习', '软件工程', '算法优化'],
-        awards: ['HKUST CS优秀学生奖', 'ACM竞赛银奖', '谷歌实习生'],
-        price: 280,
+        name: {
+            'zh-cn': 'Clio',
+            'zh-tw': 'Clio',
+            'en': 'Clio'
+        },
+        school: {
+            'zh-cn': '香港科技大学',
+            'zh-tw': '香港科技大學',
+            'en': 'Hong Kong University of Science and Technology'
+        },
+        major: {
+            'zh-cn': '计算机科学',
+            'zh-tw': '計算機科學',
+            'en': 'Computer Science'
+        },
+        grade: {
+            'zh-cn': '硕士',
+            'zh-tw': '碩士',
+            'en': 'Master'
+        },
+        region: {
+            'zh-cn': '香港',
+            'zh-tw': '香港',
+            'en': 'Hong Kong'
+        },
+        specialties: {
+            'zh-cn': ['CS申请', '机器学习', '软件工程', '算法优化'],
+            'zh-tw': ['CS申請', '機器學習', '軟件工程', '算法優化'],
+            'en': ['CS Application', 'Machine Learning', 'Software Engineering', 'Algorithm Optimization']
+        },
+        awards: {
+            'zh-cn': ['HKUST睡觉大王'],
+            'zh-tw': ['HKUST睡覺大王'],
+            'en': ['HKUST Sleeping Champion']
+        },
+        price: 666,
         rating: 9.6,
         consultations: 156
-    },
-    {
-        id: 'T002',
-        name: 'Kevin李俊杰',
-        school: '香港科技大学',
-        major: '计算机',
-        grade: '博士',
-        region: '香港',
-        specialties: ['PhD申请', '人工智能', '深度学习', '研究方法'],
-        awards: ['HKUST博士奖学金', 'ICLR论文发表', '腾讯AI Lab实习'],
-        price: 350,
-        rating: 9.8,
-        consultations: 89
-    },
-    {
-        id: 'T003',
-        name: 'Michael张伟',
-        school: '多伦多大学',
-        major: '工程',
-        grade: '硕士',
-        region: '加拿大',
-        specialties: ['工程申请', '计算机科学', '项目管理'],
-        awards: ['工程学院优秀毕业生', '创新项目奖'],
-        price: 179,
-        rating: 9.5,
-        consultations: 142
-    },
-    {
-        id: 'T004',
-        name: 'Emma李晓彤',
-        school: '香港大学',
-        major: '医学',
-        grade: '博士',
-        region: '香港',
-        specialties: ['医学院申请', '生物医学', '研究方法'],
-        awards: ['HKU Outstanding Student', '医学研究奖'],
-        price: 259,
-        rating: 9.6,
-        consultations: 97
-    },
-    {
-        id: 'T005',
-        name: 'David刘志强',
-        school: '麻省理工',
-        major: '计算机',
-        grade: '博士',
-        region: '美国',
-        specialties: ['CS申请', '人工智能', '算法设计'],
-        awards: ['MIT Fellowship', 'ICML Best Paper'],
-        price: 399,
-        rating: 9.9,
-        consultations: 203
-    },
-    {
-        id: 'T006',
-        name: 'Sophie陈美玲',
-        school: '牛津大学',
-        major: '艺术',
-        grade: '硕士',
-        region: '英国',
-        specialties: ['艺术申请', '创意写作', '作品集指导'],
-        awards: ['Oxford Arts Award', '艺术展览奖'],
-        price: 229,
-        rating: 9.4,
-        consultations: 124
     }
 ];
 
@@ -378,9 +341,9 @@ function showResults() {
 
 function filterTutors() {
     return tutorsData.filter(tutor => {
-        const regionMatch = tutor.region === filterState.region;
-        const schoolMatch = filterState.schools.length === 0 || filterState.schools.includes(tutor.school);
-        const majorMatch = filterState.majors.length === 0 || filterState.majors.includes(tutor.major);
+        const regionMatch = tutor.region[currentLang] === filterState.region;
+        const schoolMatch = filterState.schools.length === 0 || filterState.schools.includes(tutor.school[currentLang]);
+        const majorMatch = filterState.majors.length === 0 || filterState.majors.includes(tutor.major[currentLang]);
         
         return regionMatch && schoolMatch && majorMatch;
     });
@@ -398,25 +361,25 @@ function displayTutors(tutors) {
         
         card.innerHTML = `
             <div class="tutor-header">
-                <div class="tutor-avatar">${tutor.name.charAt(0)}</div>
+                <div class="tutor-avatar">${tutor.name[currentLang].charAt(0)}</div>
                 <div class="tutor-info">
-                    <h4>${tutor.name}</h4>
-                    <div class="tutor-school">${tutor.school} · ${tutor.major} · ${tutor.grade}</div>
+                    <h4>${tutor.name[currentLang]}</h4>
+                    <div class="tutor-school">${tutor.school[currentLang]} · ${tutor.major[currentLang]} · ${tutor.grade[currentLang]}</div>
                 </div>
             </div>
             <div class="tutor-details">
-                <p><strong>${t.specialties}:</strong> ${tutor.specialties.join(', ')}</p>
-                <p><strong>${t.awards}:</strong> ${tutor.awards.join(', ')}</p>
+                <p><strong>${t.specialties}:</strong> ${tutor.specialties[currentLang].join(', ')}</p>
+                <p><strong>${t.awards}:</strong> ${tutor.awards[currentLang].join(', ')}</p>
             </div>
             <div class="tutor-tags">
-                ${tutor.specialties.map(specialty => `<span class="tag">${specialty}</span>`).join('')}
+                ${tutor.specialties[currentLang].map(specialty => `<span class="tag">${specialty}</span>`).join('')}
             </div>
             <div class="tutor-price">¥${tutor.price} <span style="font-size: 0.8rem; color: #666;">/ ${t['hourly-rate']}</span></div>
             <div class="tutor-stats">
                 <span>${tutor.consultations} ${t['students']}</span>
                 <span>${t['rating']} ${tutor.rating}</span>
             </div>
-            <button class="contact-btn" onclick="openContactModal('${tutor.id}', '${tutor.name}')">${t['contact-tutor']}</button>
+            <button class="contact-btn" onclick="openContactModal('${tutor.id}', '${tutor.name[currentLang]}')">${t['contact-tutor']}</button>
         `;
         
         container.appendChild(card);
