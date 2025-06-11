@@ -405,8 +405,8 @@ function displayTutors(tutors) {
                 </div>
             </div>
             <div class="tutor-details">
-                <p><strong>${t.specialties || '擅长服务'}:</strong> ${tutor.specialties.join(', ')}</p>
-                <p><strong>${t.awards || '获奖经历'}:</strong> ${tutor.awards.join(', ')}</p>
+                <p><strong>${t.specialties}:</strong> ${tutor.specialties.join(', ')}</p>
+                <p><strong>${t.awards}:</strong> ${tutor.awards.join(', ')}</p>
             </div>
             <div class="tutor-tags">
                 ${tutor.specialties.map(specialty => `<span class="tag">${specialty}</span>`).join('')}
@@ -468,13 +468,11 @@ function openContactModal(tutorId, tutorName) {
     const modal = document.getElementById('contactModal');
     const t = translations[currentLang];
     
+    // 更新导师信息
     document.getElementById('tutorName').textContent = tutorName;
     document.getElementById('tutorCode').textContent = tutorId;
     
-    // 更新模态框文本
-    modal.querySelector('[data-key="contact-message"]').innerHTML = `${t['contact-message']} <span id="tutorName">${tutorName}</span> 老师感兴趣`;
-    modal.querySelector('[data-key="contact-instruction"]').innerHTML = `${t['contact-instruction']} <span id="tutorCode">${tutorId}</span>`;
-    
+    // 显示模态框
     modal.style.display = 'block';
 }
 

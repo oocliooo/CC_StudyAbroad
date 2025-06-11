@@ -1,73 +1,55 @@
-# Welcome to your Lovable project
+# CC留学 / CC留學 / CC Education
 
-## Project info
+## 简体中文 | [繁體中文](#繁體中文) | [English](#english)
 
-**URL**: https://lovable.dev/projects/73b18d60-b5b4-4b16-bb2f-44c6ab2a8921
+### 关于我们
+CC留学致力于搭建留学申请者与梦校学长姐之间的桥梁。我们专注为需要申请咨询和课程辅导的学生，精准匹配目标院校及专业的在读导师，让留学变得更简单！
 
-## How can I edit this code?
+### 服务特色
+- 🎯 精准专业匹配：覆盖全球TOP院校热门专业
+- 💡 一对一导师制：由成功申请者提供实战经验
+- 📚 全流程服务：从选校策略到课程辅导全覆盖
+- 🌟 真实案例库：1000+成功案例参考
 
-There are several ways of editing your application.
+### 加入我们
+正在寻找专业指导？或想成为我们的导师？
+📧 联系邮箱：
+🌐 官方网站：
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/73b18d60-b5b4-4b16-bb2f-44c6ab2a8921) and start prompting.
+<a id="繁體中文"></a>
+## 繁體中文 | [简体中文](#关于我们) | [English](#english)
 
-Changes made via Lovable will be committed automatically to this repo.
+### 關於我們
+CC留學致力於搭建留學申請者與夢校學長姐之間的橋樑。我們專注為需要申請諮詢和課程輔導的學生，精準匹配目標院校及專業的在讀導師，讓留學變得更簡單！
 
-**Use your preferred IDE**
+### 服務特色
+- 🎯 精準專業匹配：覆蓋全球TOP院校熱門專業
+- 💡 一對一導師制：由成功申請者提供實戰經驗
+- 📚 全流程服務：從選校策略到課程輔導全覆蓋
+- 🌟 真實案例庫：1000+成功案例參考
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 加入我們
+正在尋找專業指導？或想成為我們的導師？
+📧 聯繫郵箱：
+🌐 官方網站：
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+<a id="english"></a>
+## English | [简体中文](#关于我们) | [繁體中文](#繁體中文)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### About Us
+CC Education is dedicated to connecting students seeking application consulting and academic tutoring with current mentors from their dream schools and programs. Making study abroad simpler!
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Key Features
+- 🎯 Precision Matching: Covering popular majors at global TOP institutions
+- 💡 1-on-1 Mentorship: Practical guidance from successful applicants
+- 📚 End-to-End Service: From school selection to course tutoring
+- 🌟 Case Database: 1000+ proven success stories
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/73b18d60-b5b4-4b16-bb2f-44c6ab2a8921) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Join Us
+Looking for guidance? Or want to become a mentor?
+📧 Email: 
+🌐 Website: 
