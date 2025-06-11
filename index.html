@@ -1,24 +1,120 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tutor-find-card</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC留学 - 专业导师平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>CC留学</h1>
+                <span class="tagline" data-key="tagline">专业导师平台</span>
+            </div>
+            <nav class="nav-menu">
+                <div class="language-switch">
+                    <button class="lang-btn active" data-lang="zh-cn">简体</button>
+                    <button class="lang-btn" data-lang="zh-tw">繁體</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <meta property="og:title" content="tutor-find-card" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2 class="hero-title" data-key="hero-title">找到最适合的留学导师</h2>
+            <p class="hero-subtitle" data-key="hero-subtitle">专业的申请指导，个性化的服务体验</p>
+            <button class="cta-button" id="startFilter" data-key="start-filter">开始筛选导师</button>
+        </div>
+    </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <!-- Filter Section -->
+    <section class="filter-section" id="filterSection" style="display: none;">
+        <div class="container">
+            <div class="filter-card">
+                <div class="filter-step" id="step1">
+                    <h3 data-key="step1-title">选择目标地区</h3>
+                    <div class="options-grid">
+                        <button class="option-btn" data-value="美国">🇺🇸 <span data-key="usa">美国</span></button>
+                        <button class="option-btn" data-value="英国">🇬🇧 <span data-key="uk">英国</span></button>
+                        <button class="option-btn" data-value="加拿大">🇨🇦 <span data-key="canada">加拿大</span></button>
+                        <button class="option-btn" data-value="香港">🇭🇰 <span data-key="hongkong">香港</span></button>
+                        <button class="option-btn" data-value="澳洲">🇦🇺 <span data-key="australia">澳洲</span></button>
+                        <button class="option-btn" data-value="新加坡">🇸🇬 <span data-key="singapore">新加坡</span></button>
+                    </div>
+                    <button class="next-btn" id="nextStep1" disabled data-key="next">下一步</button>
+                </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+                <div class="filter-step" id="step2" style="display: none;">
+                    <h3 data-key="step2-title">选择心仪院校</h3>
+                    <div class="search-box">
+                        <input type="text" id="schoolSearch" placeholder="搜索院校..." data-key="search-school">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="options-grid" id="schoolOptions">
+                        <!-- 动态生成 -->
+                    </div>
+                    <button class="next-btn" id="nextStep2" disabled data-key="next">下一步</button>
+                </div>
+
+                <div class="filter-step" id="step3" style="display: none;">
+                    <h3 data-key="step3-title">选择专业方向</h3>
+                    <div class="options-grid">
+                        <button class="option-btn" data-value="商科">💼 <span data-key="business">商科</span></button>
+                        <button class="option-btn" data-value="工程">⚙️ <span data-key="engineering">工程</span></button>
+                        <button class="option-btn" data-value="计算机">💻 <span data-key="cs">计算机</span></button>
+                        <button class="option-btn" data-value="医学">🩺 <span data-key="medicine">医学</span></button>
+                        <button class="option-btn" data-value="艺术">🎨 <span data-key="arts">艺术</span></button>
+                        <button class="option-btn" data-value="法律">⚖️ <span data-key="law">法律</span></button>
+                        <button class="option-btn" data-value="教育">📚 <span data-key="education">教育</span></button>
+                        <button class="option-btn" data-value="传媒">📺 <span data-key="media">传媒</span></button>
+                    </div>
+                    <button class="next-btn" id="showResults" disabled data-key="show-results">查看匹配导师</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="resultsSection" style="display: none;">
+        <div class="container">
+            <div class="results-header">
+                <h3 data-key="results-title">为您推荐的导师</h3>
+                <button class="reset-btn" id="resetFilter" data-key="reset-filter">重新筛选</button>
+            </div>
+            <div class="tutors-grid" id="tutorsGrid">
+                <!-- 动态生成导师卡片 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h3 data-key="contact-title">联系导师</h3>
+            </div>
+            <div class="modal-body">
+                <div class="qr-code">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjZGRkZGRkIiBzdHJva2Utd2lkdGg9IjIiLz4KPHN2ZyB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxMzAiIGhlaWdodD0iMTMwIj4KICA8IS0tIFFSIGNvZGUgcGF0dGVybiAtLT4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9ImJsYWNrIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0iYmxhY2siLz4KICA8cmVjdCB4PSI0MCIgeT0iMCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSJibGFjayIvPgogIDxyZWN0IHg9IjYwIiB5PSIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9ImJsYWNrIi8+CiAgPCEtLSBBZGQgbW9yZSBRUiBwYXR0ZXJuIGVsZW1lbnRzIGhlcmUgLS0+CiAgPHRleHQgeD0iNjUiIHk9IjcwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzMzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNDIFFSPC90ZXh0Pgo8L3N2Zz4KPC9zdmc+" alt="微信二维码" />
+                </div>
+                <div class="contact-text">
+                    <p data-key="contact-message">如果对 <span id="tutorName"></span> 老师感兴趣</p>
+                    <p data-key="contact-instruction">请添加CC留学微信，并备注老师编号：<span id="tutorCode"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

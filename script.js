@@ -1,0 +1,475 @@
+
+// 语言配置
+const translations = {
+    'zh-cn': {
+        'tagline': '专业导师平台',
+        'hero-title': '找到最适合的留学导师',
+        'hero-subtitle': '专业的申请指导，个性化的服务体验',
+        'start-filter': '开始筛选导师',
+        'step1-title': '选择目标地区',
+        'step2-title': '选择心仪院校',
+        'step3-title': '选择专业方向',
+        'next': '下一步',
+        'show-results': '查看匹配导师',
+        'search-school': '搜索院校...',
+        'results-title': '为您推荐的导师',
+        'reset-filter': '重新筛选',
+        'contact-title': '联系导师',
+        'contact-message': '如果对',
+        'contact-instruction': '请添加CC留学微信，并备注老师编号：',
+        'contact-tutor': '联系导师',
+        'usa': '美国',
+        'uk': '英国',
+        'canada': '加拿大',
+        'hongkong': '香港',
+        'australia': '澳洲',
+        'singapore': '新加坡',
+        'business': '商科',
+        'engineering': '工程',
+        'cs': '计算机',
+        'medicine': '医学',
+        'arts': '艺术',
+        'law': '法律',
+        'education': '教育',
+        'media': '传媒',
+        'rating': '评分',
+        'students': '人次咨询',
+        'hourly-rate': '每小时'
+    },
+    'zh-tw': {
+        'tagline': '專業導師平台',
+        'hero-title': '找到最適合的留學導師',
+        'hero-subtitle': '專業的申請指導，個性化的服務體驗',
+        'start-filter': '開始篩選導師',
+        'step1-title': '選擇目標地區',
+        'step2-title': '選擇心儀院校',
+        'step3-title': '選擇專業方向',
+        'next': '下一步',
+        'show-results': '查看匹配導師',
+        'search-school': '搜索院校...',
+        'results-title': '為您推薦的導師',
+        'reset-filter': '重新篩選',
+        'contact-title': '聯繫導師',
+        'contact-message': '如果對',
+        'contact-instruction': '請添加CC留學微信，並備註老師編號：',
+        'contact-tutor': '聯繫導師',
+        'usa': '美國',
+        'uk': '英國',
+        'canada': '加拿大',
+        'hongkong': '香港',
+        'australia': '澳洲',
+        'singapore': '新加坡',
+        'business': '商科',
+        'engineering': '工程',
+        'cs': '計算機',
+        'medicine': '醫學',
+        'arts': '藝術',
+        'law': '法律',
+        'education': '教育',
+        'media': '傳媒',
+        'rating': '評分',
+        'students': '人次諮詢',
+        'hourly-rate': '每小時'
+    },
+    'en': {
+        'tagline': 'Professional Tutor Platform',
+        'hero-title': 'Find Your Perfect Study Abroad Tutor',
+        'hero-subtitle': 'Professional guidance and personalized service',
+        'start-filter': 'Start Filtering Tutors',
+        'step1-title': 'Choose Target Region',
+        'step2-title': 'Select Preferred Universities',
+        'step3-title': 'Choose Major Field',
+        'next': 'Next',
+        'show-results': 'Show Matching Tutors',
+        'search-school': 'Search universities...',
+        'results-title': 'Recommended Tutors for You',
+        'reset-filter': 'Reset Filter',
+        'contact-title': 'Contact Tutor',
+        'contact-message': 'If you are interested in',
+        'contact-instruction': 'Please add CC Study Abroad WeChat and note tutor ID:',
+        'contact-tutor': 'Contact Tutor',
+        'usa': 'USA',
+        'uk': 'UK',
+        'canada': 'Canada',
+        'hongkong': 'Hong Kong',
+        'australia': 'Australia',
+        'singapore': 'Singapore',
+        'business': 'Business',
+        'engineering': 'Engineering',
+        'cs': 'Computer Science',
+        'medicine': 'Medicine',
+        'arts': 'Arts',
+        'law': 'Law',
+        'education': 'Education',
+        'media': 'Media',
+        'rating': 'Rating',
+        'students': 'consultations',
+        'hourly-rate': 'per hour'
+    }
+};
+
+// 模拟导师数据
+const tutorsData = [
+    {
+        id: 'T001',
+        name: 'Ethan陈清豪',
+        school: '哈佛大学',
+        major: '商科',
+        grade: '研二',
+        region: '美国',
+        specialties: ['商学院申请', '投资银行', 'MBA咨询'],
+        awards: ['Harvard Dean\'s List', '投资银行实习'],
+        price: 199,
+        rating: 9.7,
+        consultations: 258
+    },
+    {
+        id: 'T002',
+        name: 'Sarah王雅文',
+        school: '剑桥大学',
+        major: '法律',
+        grade: '博士',
+        region: '英国',
+        specialties: ['法学院申请', '国际法', '学术写作'],
+        awards: ['Cambridge Scholar', '法律评论编辑'],
+        price: 299,
+        rating: 9.8,
+        consultations: 186
+    },
+    {
+        id: 'T003',
+        name: 'Michael张伟',
+        school: '多伦多大学',
+        major: '工程',
+        grade: '硕士',
+        region: '加拿大',
+        specialties: ['工程申请', '计算机科学', '项目管理'],
+        awards: ['工程学院优秀毕业生', '创新项目奖'],
+        price: 179,
+        rating: 9.5,
+        consultations: 142
+    },
+    {
+        id: 'T004',
+        name: 'Emma李晓彤',
+        school: '香港大学',
+        major: '医学',
+        grade: '博士',
+        region: '香港',
+        specialties: ['医学院申请', '生物医学', '研究方法'],
+        awards: ['HKU Outstanding Student', '医学研究奖'],
+        price: 259,
+        rating: 9.6,
+        consultations: 97
+    },
+    {
+        id: 'T005',
+        name: 'David刘志强',
+        school: '麻省理工',
+        major: '计算机',
+        grade: '博士',
+        region: '美国',
+        specialties: ['CS申请', '人工智能', '算法设计'],
+        awards: ['MIT Fellowship', 'ICML Best Paper'],
+        price: 399,
+        rating: 9.9,
+        consultations: 203
+    },
+    {
+        id: 'T006',
+        name: 'Sophie陈美玲',
+        school: '牛津大学',
+        major: '艺术',
+        grade: '硕士',
+        region: '英国',
+        specialties: ['艺术申请', '创意写作', '作品集指导'],
+        awards: ['Oxford Arts Award', '艺术展览奖'],
+        price: 229,
+        rating: 9.4,
+        consultations: 124
+    }
+];
+
+// 院校数据
+const schoolsData = {
+    '美国': ['哈佛大学', '斯坦福大学', '麻省理工', '加州大学伯克利', '耶鲁大学', '普林斯顿大学', '哥伦比亚大学', '芝加哥大学'],
+    '英国': ['牛津大学', '剑桥大学', '伦敦政经', '帝国理工', '伦敦大学学院', '爱丁堡大学', '曼彻斯特大学', '华威大学'],
+    '加拿大': ['多伦多大学', '麦吉尔大学', '英属哥伦比亚大学', '滑铁卢大学', '女王大学', '阿尔伯塔大学', '麦克马斯特大学'],
+    '香港': ['香港大学', '香港科技大学', '香港中文大学', '香港理工大学', '香港城市大学', '香港浸会大学'],
+    '澳洲': ['墨尔本大学', '悉尼大学', '澳洲国立大学', '新南威尔士大学', '昆士兰大学', '蒙纳士大学'],
+    '新加坡': ['新加坡国立大学', '南洋理工大学', '新加坡管理大学', '新加坡科技设计大学']
+};
+
+// 当前状态
+let currentLang = 'zh-cn';
+let filterState = {
+    region: '',
+    schools: [],
+    major: ''
+};
+
+// 初始化
+document.addEventListener('DOMContentLoaded', function() {
+    initializeEventListeners();
+    updateLanguage();
+});
+
+function initializeEventListeners() {
+    // 语言切换
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const lang = this.dataset.lang;
+            switchLanguage(lang);
+        });
+    });
+
+    // 开始筛选
+    document.getElementById('startFilter').addEventListener('click', function() {
+        document.getElementById('filterSection').style.display = 'block';
+        this.closest('.hero').style.display = 'none';
+    });
+
+    // 筛选步骤
+    setupFilterSteps();
+
+    // 重置筛选
+    document.getElementById('resetFilter').addEventListener('click', function() {
+        resetFilter();
+    });
+
+    // 模态框
+    setupModal();
+}
+
+function switchLanguage(lang) {
+    currentLang = lang;
+    
+    // 更新按钮状态
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    
+    updateLanguage();
+}
+
+function updateLanguage() {
+    const t = translations[currentLang];
+    
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.dataset.key;
+        if (t[key]) {
+            element.textContent = t[key];
+        }
+    });
+    
+    // 更新占位符
+    const searchInput = document.getElementById('schoolSearch');
+    if (searchInput) {
+        searchInput.placeholder = t['search-school'];
+    }
+}
+
+function setupFilterSteps() {
+    // 步骤1：选择地区
+    document.querySelectorAll('#step1 .option-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#step1 .option-btn').forEach(b => b.classList.remove('selected'));
+            this.classList.add('selected');
+            filterState.region = this.dataset.value;
+            document.getElementById('nextStep1').disabled = false;
+        });
+    });
+
+    document.getElementById('nextStep1').addEventListener('click', function() {
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+        loadSchools();
+    });
+
+    // 步骤2：选择院校
+    document.getElementById('schoolSearch').addEventListener('input', function() {
+        filterSchools(this.value);
+    });
+
+    document.getElementById('nextStep2').addEventListener('click', function() {
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';
+    });
+
+    // 步骤3：选择专业
+    document.querySelectorAll('#step3 .option-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#step3 .option-btn').forEach(b => b.classList.remove('selected'));
+            this.classList.add('selected');
+            filterState.major = this.dataset.value;
+            document.getElementById('showResults').disabled = false;
+        });
+    });
+
+    document.getElementById('showResults').addEventListener('click', function() {
+        showResults();
+    });
+}
+
+function loadSchools() {
+    const schools = schoolsData[filterState.region] || [];
+    const container = document.getElementById('schoolOptions');
+    container.innerHTML = '';
+    
+    schools.forEach(school => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = school;
+        btn.dataset.value = school;
+        
+        btn.addEventListener('click', function() {
+            this.classList.toggle('selected');
+            updateSelectedSchools();
+        });
+        
+        container.appendChild(btn);
+    });
+}
+
+function filterSchools(searchTerm) {
+    const schools = schoolsData[filterState.region] || [];
+    const container = document.getElementById('schoolOptions');
+    container.innerHTML = '';
+    
+    const filteredSchools = schools.filter(school => 
+        school.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    filteredSchools.forEach(school => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = school;
+        btn.dataset.value = school;
+        
+        btn.addEventListener('click', function() {
+            this.classList.toggle('selected');
+            updateSelectedSchools();
+        });
+        
+        container.appendChild(btn);
+    });
+}
+
+function updateSelectedSchools() {
+    const selectedBtns = document.querySelectorAll('#schoolOptions .option-btn.selected');
+    filterState.schools = Array.from(selectedBtns).map(btn => btn.dataset.value);
+    document.getElementById('nextStep2').disabled = filterState.schools.length === 0;
+}
+
+function showResults() {
+    document.getElementById('filterSection').style.display = 'none';
+    document.getElementById('resultsSection').style.display = 'block';
+    
+    const filteredTutors = filterTutors();
+    displayTutors(filteredTutors);
+}
+
+function filterTutors() {
+    return tutorsData.filter(tutor => {
+        const regionMatch = tutor.region === filterState.region;
+        const schoolMatch = filterState.schools.length === 0 || filterState.schools.includes(tutor.school);
+        const majorMatch = !filterState.major || tutor.major === filterState.major;
+        
+        return regionMatch && schoolMatch && majorMatch;
+    });
+}
+
+function displayTutors(tutors) {
+    const container = document.getElementById('tutorsGrid');
+    const t = translations[currentLang];
+    
+    container.innerHTML = '';
+    
+    tutors.forEach(tutor => {
+        const card = document.createElement('div');
+        card.className = 'tutor-card';
+        
+        card.innerHTML = `
+            <div class="tutor-header">
+                <div class="tutor-avatar">${tutor.name.charAt(0)}</div>
+                <div class="tutor-info">
+                    <h4>${tutor.name}</h4>
+                    <div class="tutor-school">${tutor.school} · ${tutor.major} · ${tutor.grade}</div>
+                </div>
+            </div>
+            <div class="tutor-details">
+                <p><strong>${t.specialties || '擅长服务'}:</strong> ${tutor.specialties.join(', ')}</p>
+                <p><strong>${t.awards || '获奖经历'}:</strong> ${tutor.awards.join(', ')}</p>
+            </div>
+            <div class="tutor-tags">
+                ${tutor.specialties.map(specialty => `<span class="tag">${specialty}</span>`).join('')}
+            </div>
+            <div class="tutor-price">¥${tutor.price} <span style="font-size: 0.8rem; color: #666;">/ ${t['hourly-rate']}</span></div>
+            <div class="tutor-stats">
+                <span>${tutor.consultations} ${t['students']}</span>
+                <span>${t['rating']} ${tutor.rating}</span>
+            </div>
+            <button class="contact-btn" onclick="openContactModal('${tutor.id}', '${tutor.name}')">${t['contact-tutor']}</button>
+        `;
+        
+        container.appendChild(card);
+    });
+    
+    if (tutors.length === 0) {
+        container.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #666;">
+                <h3>暂无匹配的导师</h3>
+                <p>请尝试调整筛选条件</p>
+            </div>
+        `;
+    }
+}
+
+function resetFilter() {
+    filterState = { region: '', schools: [], major: '' };
+    
+    document.getElementById('resultsSection').style.display = 'none';
+    document.querySelector('.hero').style.display = 'block';
+    document.getElementById('filterSection').style.display = 'none';
+    
+    // 重置所有步骤
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step3').style.display = 'none';
+    
+    // 清除选择状态
+    document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
+    document.querySelectorAll('.next-btn').forEach(btn => btn.disabled = true);
+}
+
+function setupModal() {
+    const modal = document.getElementById('contactModal');
+    const closeBtn = document.querySelector('.close');
+    
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+}
+
+function openContactModal(tutorId, tutorName) {
+    const modal = document.getElementById('contactModal');
+    const t = translations[currentLang];
+    
+    document.getElementById('tutorName').textContent = tutorName;
+    document.getElementById('tutorCode').textContent = tutorId;
+    
+    // 更新模态框文本
+    modal.querySelector('[data-key="contact-message"]').innerHTML = `${t['contact-message']} <span id="tutorName">${tutorName}</span> 老师感兴趣`;
+    modal.querySelector('[data-key="contact-instruction"]').innerHTML = `${t['contact-instruction']} <span id="tutorCode">${tutorId}</span>`;
+    
+    modal.style.display = 'block';
+}
+
+// 全局函数，供HTML调用
+window.openContactModal = openContactModal;
