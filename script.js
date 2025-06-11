@@ -208,7 +208,7 @@ let currentLang = 'zh-cn';
 let filterState = {
     region: '',
     schools: [],
-    major: ''
+    majors: []  // 修改为数组支持多选
 };
 
 // 初始化
@@ -289,7 +289,7 @@ function setupFilterSteps() {
         loadSchools();
     });
 
-    // 步骤2：选择院校
+    // 步骤2：选择院校 - 支持多选
     document.getElementById('schoolSearch').addEventListener('input', function() {
         filterSchools(this.value);
     });
@@ -299,13 +299,11 @@ function setupFilterSteps() {
         document.getElementById('step3').style.display = 'block';
     });
 
-    // 步骤 3：选择专业
+    // 步骤 3：选择专业 - 支持多选
     document.querySelectorAll('#step3 .option-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            document.querySelectorAll('#step3 .option-btn').forEach(b => b.classList.remove('selected'));
-            this.classList.add('selected');
-            filterState.major = this.dataset.value;
-            document.getElementById('showResults').disabled = false;
+            this.classList.toggle('selected');
+            updateSelectedMajors();
         });
     });
 
@@ -364,6 +362,12 @@ function updateSelectedSchools() {
     document.getElementById('nextStep2').disabled = filterState.schools.length === 0;
 }
 
+function updateSelectedMajors() {
+    const selectedBtns = document.querySelectorAll('#step3 .option-btn.selected');
+    filterState.majors = Array.from(selectedBtns).map(btn => btn.dataset.value);
+    document.getElementById('showResults').disabled = filterState.majors.length === 0;
+}
+
 function showResults() {
     document.getElementById('filterSection').style.display = 'none';
     document.getElementById('resultsSection').style.display = 'block';
@@ -376,7 +380,7 @@ function filterTutors() {
     return tutorsData.filter(tutor => {
         const regionMatch = tutor.region === filterState.region;
         const schoolMatch = filterState.schools.length === 0 || filterState.schools.includes(tutor.school);
-        const majorMatch = !filterState.major || tutor.major === filterState.major;
+        const majorMatch = filterState.majors.length === 0 || filterState.majors.includes(tutor.major);
         
         return regionMatch && schoolMatch && majorMatch;
     });
@@ -429,7 +433,7 @@ function displayTutors(tutors) {
 }
 
 function resetFilter() {
-    filterState = { region: '', schools: [], major: '' };
+    filterState = { region: '', schools: [], majors: [] };
     
     document.getElementById('resultsSection').style.display = 'none';
     document.querySelector('.hero').style.display = 'block';
