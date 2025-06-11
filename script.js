@@ -1,4 +1,3 @@
-
 // 语言配置
 const translations = {
     'zh-cn': {
@@ -34,7 +33,9 @@ const translations = {
         'media': '传媒',
         'rating': '评分',
         'students': '人次咨询',
-        'hourly-rate': '每小时'
+        'hourly-rate': '每小时',
+        'specialties': '擅长服务',
+        'awards': '获奖经历'
     },
     'zh-tw': {
         'tagline': '專業導師平台',
@@ -69,7 +70,9 @@ const translations = {
         'media': '傳媒',
         'rating': '評分',
         'students': '人次諮詢',
-        'hourly-rate': '每小時'
+        'hourly-rate': '每小時',
+        'specialties': '擅長服務',
+        'awards': '獲獎經歷'
     },
     'en': {
         'tagline': 'Professional Tutor Platform',
@@ -104,37 +107,39 @@ const translations = {
         'media': 'Media',
         'rating': 'Rating',
         'students': 'consultations',
-        'hourly-rate': 'per hour'
+        'hourly-rate': 'per hour',
+        'specialties': 'Specialties',
+        'awards': 'Awards'
     }
 };
 
-// 模拟导师数据
+// 更新导师数据 - 添加两个香港科技大学计算机系的默认导师
 const tutorsData = [
     {
         id: 'T001',
-        name: 'Ethan陈清豪',
-        school: '哈佛大学',
-        major: '商科',
-        grade: '研二',
-        region: '美国',
-        specialties: ['商学院申请', '投资银行', 'MBA咨询'],
-        awards: ['Harvard Dean\'s List', '投资银行实习'],
-        price: 199,
-        rating: 9.7,
-        consultations: 258
+        name: 'Alex张志豪',
+        school: '香港科技大学',
+        major: '计算机',
+        grade: '硕士',
+        region: '香港',
+        specialties: ['CS申请', '机器学习', '软件工程', '算法优化'],
+        awards: ['HKUST CS优秀学生奖', 'ACM竞赛银奖', '谷歌实习生'],
+        price: 280,
+        rating: 9.6,
+        consultations: 156
     },
     {
         id: 'T002',
-        name: 'Sarah王雅文',
-        school: '剑桥大学',
-        major: '法律',
+        name: 'Kevin李俊杰',
+        school: '香港科技大学',
+        major: '计算机',
         grade: '博士',
-        region: '英国',
-        specialties: ['法学院申请', '国际法', '学术写作'],
-        awards: ['Cambridge Scholar', '法律评论编辑'],
-        price: 299,
+        region: '香港',
+        specialties: ['PhD申请', '人工智能', '深度学习', '研究方法'],
+        awards: ['HKUST博士奖学金', 'ICLR论文发表', '腾讯AI Lab实习'],
+        price: 350,
         rating: 9.8,
-        consultations: 186
+        consultations: 89
     },
     {
         id: 'T003',
@@ -190,7 +195,6 @@ const tutorsData = [
     }
 ];
 
-// 院校数据
 const schoolsData = {
     '美国': ['哈佛大学', '斯坦福大学', '麻省理工', '加州大学伯克利', '耶鲁大学', '普林斯顿大学', '哥伦比亚大学', '芝加哥大学'],
     '英国': ['牛津大学', '剑桥大学', '伦敦政经', '帝国理工', '伦敦大学学院', '爱丁堡大学', '曼彻斯特大学', '华威大学'],
@@ -200,7 +204,6 @@ const schoolsData = {
     '新加坡': ['新加坡国立大学', '南洋理工大学', '新加坡管理大学', '新加坡科技设计大学']
 };
 
-// 当前状态
 let currentLang = 'zh-cn';
 let filterState = {
     region: '',
@@ -296,7 +299,7 @@ function setupFilterSteps() {
         document.getElementById('step3').style.display = 'block';
     });
 
-    // 步骤3：选择专业
+    // 步骤 3：选择专业
     document.querySelectorAll('#step3 .option-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('#step3 .option-btn').forEach(b => b.classList.remove('selected'));
